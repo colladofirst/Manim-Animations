@@ -2,12 +2,13 @@ from manim import *
 
 from componentes import Resistencia, Bobina, VarillaMovil
 
-class Circuito(Scene):
-    def construct(self):
+class Circuito(VGroup):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
         R = Resistencia().shift(LEFT *3 +UP*2)
         L = Bobina().shift(RIGHT*2 + UP*2)
-        Varilla = VarillaMovil().shift(RIGHT * 3 + DOWN*1.5)
+        self.Varilla = VarillaMovil().shift(RIGHT * 3 + DOWN*1.5)
 
         #circuito parte de arriba
         cable1 = Line(R.get_right(), L.get_left()).shift(DOWN*0.3)
@@ -18,8 +19,8 @@ class Circuito(Scene):
         
         #circuito partes horizontales
         cable3= Line(R.get_left(), R.get_left() + DOWN*5).shift(DOWN*0.3)
-        Varilla.scale([1,3.25,1])
-        Varilla.move_to(cable2.get_bottom() + DOWN*2.5, RIGHT*2)
+        self.Varilla.scale([1,3.25,1])
+        self.Varilla.move_to(cable2.get_bottom() + DOWN*2.5, RIGHT*2)
         
     
         
@@ -29,9 +30,10 @@ class Circuito(Scene):
         #iMPORTANTE: cable4 debe añadirse primero para que la varilla se superponga encima
         CABLES= VGroup(cable3, cable4)
         self.add(CABLES)
-        self.add(Varilla)
+        self.add(self.Varilla)
         
         CIRCUITO_RL = VGroup(PARTESUPERIOR,CABLES)
+        
         
         
         
