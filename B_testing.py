@@ -89,5 +89,5 @@ class TestCampoB(Scene):
         campo5 = CampoB(sentido="+k", color=ORANGE)
         campo6 = CampoB(sentido="-k", color=PURPLE)
         
-        self.add(campo5)
+        self.add(campo5) #Cambiar para ver el campo que interese poner
         
